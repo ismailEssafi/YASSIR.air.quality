@@ -1,0 +1,1 @@
+export { default as MongoService } from './mongoService';

@@ -28,4 +28,4 @@ class MongoConnexion {
 
 }
 
-module.exports = MongoConnexion 
+module.exports = { MongoConnexion }

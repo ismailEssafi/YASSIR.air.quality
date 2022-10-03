@@ -1,3 +1,3 @@
-const MongoConnexion  = require('./mongoConnexion');
+const { MongoConnexion }  = require('./mongoConnexion');
 
 module.exports =  { MongoConnexion };

@@ -1,6 +1,7 @@
 "use strict";
 const express = require("express");
 const bodyParser = require("body-parser");
+const { ApiRoute } = require("./src/routes/apiRoutes");
 const { MongoConnexion } = require("./config");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -27,6 +28,7 @@ class Server {
    * init routing
    */
   initRoutes() {
+    this.app.use('/', ApiRoute.initRoutes());
   }
 
   /**
