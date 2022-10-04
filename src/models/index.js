@@ -1,3 +1,3 @@
-const { AirQuality } = require('./airQuality');
+const  AirQuality  = require('./airQuality');
 
 module.exports = { AirQuality };

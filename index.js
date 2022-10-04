@@ -4,6 +4,10 @@ const bodyParser = require("body-parser");
 const { ApiRoute } = require("./src/routes/apiRoutes");
 const { MongoConnexion } = require("./config");
 const cors = require("cors");
+const { ToadScheduler, SimpleIntervalJob, Task } = require('toad-scheduler')
+const axios = require('axios').default;
+const { AirQuality } = require('./src/models');
+const { MongoService } = require('./src/services')
 const dotenv = require("dotenv");
 
 class Server {
@@ -40,6 +44,21 @@ class Server {
       // launch server
       MongoConnexion.connect(); // connect to database
       console.log("server is running on port " + port);
+      
+      const scheduler = new ToadScheduler()
+      const task = new Task('simple task', () => { 
+        axios.get('http://192.168.1.213:3000/air-quality/48.856613/2.352222')
+        .then(async function (response) {
+          const mongoService = new MongoService(AirQuality);
+          await mongoService.create({city : 'Paris', pollution : response.data.result.pollution});
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+       })
+      const job = new SimpleIntervalJob({ seconds: 60, }, task)
+
+      scheduler.addSimpleIntervalJob(job)
     });
   }
 

@@ -9,7 +9,14 @@ class AirQuality {
      */
     static get schema() {
         return new mongoose.Schema({
-            
+            city : { type: String},
+            pollution : { 
+                ts: { type : Date},
+                aqius: { type: Number},
+                mainus: { type: String},
+                aqicn: { type: Number},
+                maincn: { type: String}
+             }
         }, {
             timestamps: true
         });

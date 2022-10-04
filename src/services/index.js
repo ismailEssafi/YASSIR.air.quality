@@ -1,1 +1,3 @@
-export { default as MongoService } from './mongoService';
+const MongoService = require('./mongoService');
+
+module.exports = { MongoService };

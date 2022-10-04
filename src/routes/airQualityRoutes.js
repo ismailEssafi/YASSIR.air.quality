@@ -11,7 +11,8 @@ class AirQualityRoutes {
     static initRoutes() {
         const airQualityController = new AirQualityController();
         const router = Router();
-        router.route('/:lat/:lon').get(airQualityController.getAirQualityNearestCity())
+        router.route('/:lat/:lon').get(airQualityController.getAirQualityNearestCity());
+        router.route('/paris-most-polluted-datetime').get(airQualityController.getParisMostPollutedDatetime());
         return router;
     }
 }

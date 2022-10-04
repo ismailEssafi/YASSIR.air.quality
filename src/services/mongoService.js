@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 class MongoService {
 
@@ -124,4 +124,4 @@ class MongoService {
 
 }
 
-export default MongoService;
+module.exports = MongoService;
